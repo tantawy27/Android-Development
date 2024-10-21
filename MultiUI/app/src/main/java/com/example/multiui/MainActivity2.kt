@@ -53,7 +53,7 @@ class MainActivity2 : AppCompatActivity() {
 
 
     companion object{
-        const val TAG="TAG3_ACTIVITY"
+        const val TAG="TAG2_ACTIVITY"
     }
 private fun addcallbacks(){
     binding.btnClose.setOnClickListener{
