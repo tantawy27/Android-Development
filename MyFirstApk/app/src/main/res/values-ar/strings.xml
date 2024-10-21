@@ -7,6 +7,7 @@
     <string name="male">ذكر</string>
     <string name="female">أنثي</string>
     <string name="save_info">حفظ بياناتك</string>
+    <string name="submit">تأكيد</string>
 
 
 </resources>
