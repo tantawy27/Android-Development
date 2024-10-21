@@ -1,22 +1,20 @@
 package com.example.multiui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.multiui.databinding.ActivityMain2Binding
+import com.example.multiui.MainActivity.Constant.extraName
 import com.example.multiui.databinding.ActivityMainBinding
 
-class MainActivity2 : AppCompatActivity() {
-
-    lateinit var binding: ActivityMain2Binding
+class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG,"on Create")
-        binding=ActivityMain2Binding.inflate(layoutInflater)
+        Log.d(MainActivity.TAG,"on Create")
+        binding=ActivityMainBinding.inflate(layoutInflater)  // access all objects in layout.xml
         setContentView(binding.root)
 
-        val name=intent.getStringExtra(MainActivity.Constant.extraName)
-        binding.textData.text=name
         addcallbacks()
     }
 
@@ -45,19 +43,25 @@ class MainActivity2 : AppCompatActivity() {
         Log.d(TAG,"on Restart")
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG,"on Destroy")
     }
 
 
+    private fun  addcallbacks() {
+        binding.Button.setOnClickListener{
+            val intent=Intent(this,MainActivity2::class.java)  //used to go to another activity
+            val name=binding.textName.text.toString()
+            intent.putExtra(extraName, name)
+            startActivity(intent)
+        }
+    }
     companion object{
-        const val TAG="TAG3_ACTIVITY"
+        const val TAG="TAG1_ACTIVITY"
     }
-private fun addcallbacks(){
-    binding.btnClose.setOnClickListener{
-        finish()
+
+    object Constant{
+        val extraName="extraName"
     }
-}
 }
